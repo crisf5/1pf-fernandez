@@ -18,9 +18,9 @@ export class EditDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Course
   ) {
     this.formulario = fb.group({
-      nombre: new FormControl(data.name),
-      apellido: new FormControl(data.surname),
-      curso: new FormControl(data.course)
+      name: new FormControl(data.name),
+      surname: new FormControl(data.surname),
+      course: new FormControl(data.course)
     })
   }
 

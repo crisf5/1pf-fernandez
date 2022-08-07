@@ -18,9 +18,9 @@ export class AddDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Course
   ) {
     this.formulario = fb.group({
-      nombre: new FormControl(data),
-      apellido: new FormControl(data),
-      curso: new FormControl(data)
+      name: new FormControl(),
+      surname: new FormControl(),
+      course: new FormControl()
     })
   }
 

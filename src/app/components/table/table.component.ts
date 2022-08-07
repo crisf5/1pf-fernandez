@@ -42,6 +42,7 @@ export class TableComponent implements OnInit {
     
   }
 
+
   add(){
     const dialogRef = this.dialog.open(AddDialogComponent, {
       width: '25%',
@@ -63,7 +64,7 @@ export class TableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){        
+      if(result){   
         const item = this.dataSource.data.find(curso => curso.name === elemento.name && curso.surname === elemento.surname);
         const index = this.dataSource.data.indexOf(item!);
         this.dataSource.data[index] = result;
