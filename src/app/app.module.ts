@@ -18,6 +18,7 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { TransformPipe } from './pipes/transform.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     NavbarComponent,
     ToolbarComponent,
     TableComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    TransformPipe
   ],
   imports: [
     BrowserModule,

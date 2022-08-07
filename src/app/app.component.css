@@ -18,7 +18,13 @@
 
 .table{
     grid-area: table;
-    padding-top: 20px;
+    padding-top: 25px;
     padding-right: 10px;
+}
+
+@media (max-height: 840px){
+    .table{
+        padding-top: 30px;
+    }
 }
 

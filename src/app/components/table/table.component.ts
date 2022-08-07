@@ -29,7 +29,7 @@ const ELEMENT_DATA: Course[] = [
 })
 export class TableComponent implements OnInit {
   
-  displayedColumns: string[] = ['name', 'surname', 'course', 'actions'];
+  displayedColumns: string[] = ['name', 'course', 'actions'];
   dataSource: MatTableDataSource<Course> = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatTable) table!: MatTable<Course>;
 
@@ -54,7 +54,6 @@ export class TableComponent implements OnInit {
       if(result){
         const item = this.dataSource.data.find(curso => curso.name === result.name);
         const index = this.dataSource.data.indexOf(item!);
-        console.log(this.dataSource.data[index])
         this.dataSource.data[index] = result;
         this.table.renderRows();
       }
