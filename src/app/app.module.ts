@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { TransformPipe } from './pipes/transform.pipe';
 import { FontSizeDirective } from './directives/font-size.directive';
+import { AddDialogComponent } from './components/add-dialog/add-dialog.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FontSizeDirective } from './directives/font-size.directive';
     TableComponent,
     EditDialogComponent,
     TransformPipe,
-    FontSizeDirective
+    FontSizeDirective,
+    AddDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -13,3 +13,12 @@ table {
   border-radius: 50px;
 }
 
+.add{
+  display: flex;
+  justify-content: center ;
+  margin-top: 3%;
+}
+
+.add button{
+  border: solid 1px black;
+}

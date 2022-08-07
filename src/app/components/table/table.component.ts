@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog} from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { AddDialogComponent } from '../add-dialog/add-dialog.component';
+import { DataSource } from '@angular/cdk/collections';
+
 
 export interface Course {
   name: string;
@@ -29,7 +32,7 @@ const ELEMENT_DATA: Course[] = [
 })
 export class TableComponent implements OnInit {
   
-  displayedColumns: string[] = ['name', 'course', 'actions'];
+  displayedColumns: string[] = ['name', 'course', 'actions', 'add'];
   dataSource: MatTableDataSource<Course> = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatTable) table!: MatTable<Course>;
 
@@ -39,9 +42,23 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(elemento: Course){
-    this.dataSource.data = this.dataSource.data.filter((curso: Course) => (curso.name != elemento.name || curso.course != elemento.course));
+
+  add(element : Course){
+    const dialogRef = this.dialog.open(AddDialogComponent, {
+      width: '25%',
+      data: element
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        console.log(result)
+        this.dataSource.data.push(result)
+        console.log(this.dataSource.data)
+        this.table.renderRows()
+      }
+    })
   }
+
 
   edit(elemento: Course){
     const dialogRef = this.dialog.open(EditDialogComponent, {
@@ -49,15 +66,19 @@ export class TableComponent implements OnInit {
       data: elemento
     });
 
-    
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        const item = this.dataSource.data.find(curso => curso.name === result.name);
+        const item = this.dataSource.data.find(curso => curso.name === elemento.name && curso.surname === elemento.surname);
         const index = this.dataSource.data.indexOf(item!);
         this.dataSource.data[index] = result;
         this.table.renderRows();
       }
     });
+  }
+
+
+  delete(elemento: Course){
+    this.dataSource.data = this.dataSource.data.filter((curso: Course) => (curso.name != elemento.name || curso.course != elemento.course));
   }
 
   fontSizeTable : string = "20px";

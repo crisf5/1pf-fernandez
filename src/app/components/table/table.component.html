@@ -13,7 +13,7 @@
   
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef [appFontSize]="fontSizeTable"> Actions </th>
-      <td class="buttons" mat-cell *matCellDef="let element">  
+      <td class="buttons" mat-cell *matCellDef="let element" style="width: 20%;">  
         <button class="button" mat-icon-button (click)="edit(element)">
               <mat-icon>edit</mat-icon>
         </button>
@@ -23,7 +23,16 @@
       </td>
   </ng-container>
 
+  <ng-container matColumnDef="add">
+    <th mat-header-cell *matHeaderCellDef="let element"> 
+      <button (click)="add(element)" mat-icon-button><mat-icon>add</mat-icon></button> 
+    </th>
+    <td mat-cell *matCellDef style="width: 20px;"> </td>
+  </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+
+
