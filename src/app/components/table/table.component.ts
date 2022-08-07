@@ -3,7 +3,6 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog} from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { AddDialogComponent } from '../add-dialog/add-dialog.component';
-import { DataSource } from '@angular/cdk/collections';
 
 
 export interface Course {
@@ -40,20 +39,17 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
-
-  add(element : Course){
+  add(){
     const dialogRef = this.dialog.open(AddDialogComponent, {
       width: '25%',
-      data: element
     });
     
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        console.log(result)
         this.dataSource.data.push(result)
-        console.log(this.dataSource.data)
         this.table.renderRows()
       }
     })
@@ -67,7 +63,7 @@ export class TableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if(result){        
         const item = this.dataSource.data.find(curso => curso.name === elemento.name && curso.surname === elemento.surname);
         const index = this.dataSource.data.indexOf(item!);
         this.dataSource.data[index] = result;
@@ -80,6 +76,7 @@ export class TableComponent implements OnInit {
   delete(elemento: Course){
     this.dataSource.data = this.dataSource.data.filter((curso: Course) => (curso.name != elemento.name || curso.course != elemento.course));
   }
+
 
   fontSizeTable : string = "20px";
 }
