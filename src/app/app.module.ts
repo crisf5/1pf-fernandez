@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { TransformPipe } from './pipes/transform.pipe';
+import { FontSizeDirective } from './directives/font-size.directive';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { TransformPipe } from './pipes/transform.pipe';
     ToolbarComponent,
     TableComponent,
     EditDialogComponent,
-    TransformPipe
+    TransformPipe,
+    FontSizeDirective
   ],
   imports: [
     BrowserModule,

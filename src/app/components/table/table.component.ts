@@ -60,4 +60,5 @@ export class TableComponent implements OnInit {
     });
   }
 
+  fontSizeTable : string = "20px";
 }
